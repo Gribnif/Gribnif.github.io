@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>http://www4.pair.com/gribnif/faqs/</loc>
+    <lastmod>2018-01-20T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www4.pair.com/gribnif/secrets/</loc>
+    <lastmod>2018-01-20T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www4.pair.com/gribnif/downloads/neodesk/</loc>
+    <lastmod>2018-01-21T18:24:11-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www4.pair.com/gribnif/downloads/geneva/</loc>
+    <lastmod>2018-01-21T18:23:35-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www4.pair.com/gribnif/faqs/geneva/</loc>
+    <lastmod>2018-01-21T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www4.pair.com/gribnif/downloads/shareware/</loc>
+    <lastmod>2018-01-20T13:09:59-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www4.pair.com/gribnif/downloads/</loc>
+    <lastmod>2018-01-20T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://www4.pair.com/gribnif/categories/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www4.pair.com/gribnif/</loc>
+    <lastmod>2018-01-20T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www4.pair.com/gribnif/main/</loc>
+  </url>
+  
+  <url>
+    <loc>http://www4.pair.com/gribnif/tags/</loc>
+    <priority>0</priority>
+  </url>
+  
+</urlset>

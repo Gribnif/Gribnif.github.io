@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.32.4" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>Frequently Asked Questions (FAQs) for Geneva &middot; Gribnif Software</title>
+
+  
+  <link rel="stylesheet" href="http://www4.pair.com/gribnif/css/print.css" media="print">
+  <link rel="stylesheet" href="http://www4.pair.com/gribnif/css/poole.css">
+  <link rel="stylesheet" href="http://www4.pair.com/gribnif/css/syntax.css">
+  <link rel="stylesheet" href="http://www4.pair.com/gribnif/css/hyde.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://www4.pair.com/gribnif/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="http://www4.pair.com/gribnif/favicon.png">
+
+  
+  <link href="" rel="alternate" type="application/rss+xml" title="Gribnif Software" />
+</head>
+
+  <body class="theme-base-0d ">
+  <div class="sidebar">
+  <div class="container">
+    <div class="sidebar-about">
+      <a href="http://www4.pair.com/gribnif/"><h1>Gribnif Software</h1></a>
+      <p class="lead">
+         
+      </p>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li><a href="http://www4.pair.com/gribnif/">Home</a> </li>
+      <li><a href="http://www4.pair.com/gribnif/faqs/"> FAQs </a></li><li><a href="http://www4.pair.com/gribnif/secrets/"> Al Fasoldt&#39;s &#34;Secrets of...&#34; series </a></li><li><a href="http://www4.pair.com/gribnif/downloads/"> Downloads </a></li>
+      <li><i class="fa-mail"></i><a href="mailto:gribnif@pair.com">E-mail</li></a>
+    </ul>
+
+    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+<input type="hidden" name="cmd" value="_s-xclick">
+<input type="hidden" name="hosted_button_id" value="6VKNJLXHKCBT8">
+<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" border="0" name="submit" alt="Please consider using PayPal to Donate to Gribnif Software">
+<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+</form>
+
+
+    <p>Copyright &copy; 2018, Gribnif Software. All rights reserved.</p>
+  </div>
+</div>
+
+    <div class="content container">
+    <div class="post">
+  <h1>Frequently Asked Questions (FAQs) for Geneva</h1>
+  <span class="post-date">Sun, Jan 21, 2018</span>
+  
+
+<ul>
+<li><A HREF="#multitask">What&rsquo;s the difference between preemptive and cooperative multitasking?</A></li>
+<li><A HREF="#bootmgr">Why can&rsquo;t I use my boot manager to change resolutions?</A></li>
+<li><A HREF="#gadcolors">Why are the colors of some of my window gadgets messed up?</A></li>
+<li><A HREF="#extras">Where can I get info on using MiNT with Geneva?</A></li>
+</ul>
+
+<h3 id="a-name-multitask-what-s-the-difference-between-preemptive-and-cooperative-multitasking-a"><A NAME="multitask">What&rsquo;s the difference between preemptive and cooperative multitasking?</A></h3>
+
+<p>Cooperative multitasking relies on applications making certain calls frequently
+(in this case, AES calls) in order to allow the other processes a chance
+to become active. Preemptive multitasking gives all processes an equal chance
+to get control on a regular basis.</p>
+
+<p>The advantage of preemptive multitasking is that if an application goes into
+an infinite loop or does something that is computationally intensive (like
+ray tracing) where it doesn&rsquo;t want to have to use the AES, the other applications
+won&rsquo;t get locked-out. However, under GEM, many older applications use methods
+that still prevent you from getting to other applications while they are
+doing time-intensive tasks. An example of this is printing in Pagestream.</p>
+
+<p>Because GEM was originally designed using cooperative multitasking, older
+applications work much better with this method. The major reason Geneva&rsquo;s
+primary mode of multitasking is cooperative is for backward compatibility.</p>
+
+<p>But you can use MiNT with Geneva 004 or newer to get preemptive multitasking,
+if you desire. Granted, MiNT is not very easy to set up, and can decrease
+compatibility, but it does offer some other advantages such as i/o pipes,
+alternate filesystems, and shared memory.</p>
+
+<h3 id="a-name-bootmgr-why-can-t-i-use-my-boot-manager-to-change-resolutions-a"><A NAME="bootmgr">Why can&rsquo;t I use my boot manager to change resolutions?</A></h3>
+
+<p>Geneva can read the default video resolution in two ways, either from the
+old-style DESKTOP.INF or NEWDESK.INF file, which is used by most boot managers
+to choose resolution, or from its own GENEVA.CNF.</p>
+
+<p>By default, Geneva uses the value stored in GENEVA.CNF. You can change this
+by going to the Task Manager&rsquo;s Misc. Options dialog. There, check the &ldquo;Video
+from DESKTOP/NEWDESK.INF&rdquo; option. Press &ldquo;OK&rdquo; and now Save Geneva&rsquo;s Settings.</p>
+
+<h3 id="a-name-gadcolors-why-are-the-colors-of-some-of-my-window-gadgets-messed-up-a"><A NAME="gadcolors">Why are the colors of some of my window gadgets messed up?</A></h3>
+
+<p>Geneva&rsquo;s windows have lots of extra features that are not part of the normal
+Atari-style windows. Starting with release 004, Geneva had a new feature
+which allows you to individually specify the colors of all window gadgets.</p>
+
+<p>In order to maintain backward compatibility with old applications, however,
+Geneva still allows programs which know about changing window colors using
+Atari&rsquo;s methods to do so. The result is that if you use another program,
+like the XCONTROL module WCOLORS.CPX, the CPX&rsquo;s settings will override any
+changes you might make using Geneva&rsquo;s Task Manager. The solution is to remove
+WCOLORS.CPX, or rename it to WCOLORS.CPZ.</p>
+
+<h3 id="a-name-extras-where-can-i-get-info-on-using-mint-with-geneva-a"><A NAME="extras">Where can I get info on using MiNT with Geneva?</A></h3>
+
+<p>Since release 004, Geneva can be used with the MiNT multitasking kernel to
+get true preemptive multitasking.</p>
+
+<p>Configuring MiNT can be rather difficult. The file MINT/MINT.TXT on the Geneva
+Extras Disk describes the basic setup.</p>
+
+</div>
+
+
+    </div>
+
+    
+  </body>
+</html>

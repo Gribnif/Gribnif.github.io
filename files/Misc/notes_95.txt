@@ -1,0 +1,1656 @@
+                  Gribnif Software's Desktop Notes Online
+
+                          Issue VI, Summer 1995
+
+
+
+[Note: This document does not accurately reflect the version numbers
+
+or features of all our products. Please refer to
+
+http://www.pair.com/gribnif for more up-to-date information]
+
+
+
+
+
+In This Issue
+
+-------------
+
+
+
+        Welcome!                       
+
+        We've Moved... Again!          Gribnif Utilities Disk
+
+        About Our Patch Disks          STalker 3.05     
+
+        Geneva Release 004             STeno 2.12       
+
+        GenevaRun                      CardFile 4.06
+
+        The Geneva Utilities Disk      Interface
+
+        NeoDesk 4 Release 003          Name the Gribnif Contest Results
+
+        NeoDesk 4 Icon Disk            
+
+        
+
+
+
+Welcome!
+
+--------
+
+
+
+Welcome to another edition of Desktop Notes. It's been a while since we
+
+last sent out one of these, but a lot has changed. This time around, we've
+
+got new versions of our most popular programs, as well as some new
+
+utilities and a great program launcher for Geneva. Unlike previous
+
+newsletters, we are sending this one out right as the programs are ready to
+
+ship, not in advance, so you can order things right away and not have to
+
+wait.
+
+
+
+I would also like to thank Yanick Dufresne and Al Fasoldt for helping out
+
+with the newsletter. Without them, it would have taken a lot longer to get
+
+this done.
+
+
+
+
+
+We've Moved... Again!
+
+---------------------
+
+
+
+As a result, our phone numbers have changed. The old numbers will continue
+
+to work for a few months, but it will be easier if you start using these
+
+new ones right now:
+
+
+
+  Phone: (413) 532-2434
+
+  Fax:   (413) 532-2540
+
+
+
+Our address stays the same:
+
+
+
+  PO Box 779
+
+  Northampton, MA 01061-0779
+
+
+
+You can also reach us from the Internet: gribnif@pair.com
+
+
+
+
+
+About Our Patch Disks
+
+---------------------
+
+
+
+A patch disk contains a program you can run yourself, which modifies your
+
+original program disk and updates its contents to a newer version.
+
+
+
+The advantage is that you don't need to send the disk back to us, we just
+
+send you the patch program. The disadvantage is that if the contents of
+
+your master disk have changed, the patch program may not work. If this
+
+happens, you can send the disk back to us for the update.
+
+
+
+This time around, all of the very newest versions of our products are
+
+provided as patch programs, for which we charge just $5. We also make patch
+
+programs available online, so you can download them.
+
+
+
+Whether you order them from us or pay an online service for the download
+
+time, the patches will cost about the same. The difference to us, however,
+
+is significant. Selling the patch disks helps us recover our costs and
+
+allows us to keep our mailing list current. We realize that users outside
+
+North America and those who don't get our newsletter need an alternate way
+
+of getting the patches, so that's why we make them available online.
+
+
+
+We've kept the cost of the patches low and have made the upgrades as
+
+hassle-free as possible. (We're not asking you to send back your original
+
+disks, for example.) We'll send out your patch disk in the next day's mail,
+
+and you can still send your original disk back to us for repair if anything
+
+goes wrong. We hope you will think that $5 is a fair price to pay for this
+
+convenience.
+
+
+
+
+
+Geneva Release 004
+
+------------------  by Dan Wilga
+
+
+
+[Note: At the time this file was re-edited, Geneva was at release 005]
+
+
+
+When I finished the last version of Geneva on New Years Eve of 1993, I
+
+intended to release another version in a few months, soon after NeoDesk 4
+
+was done.
+
+
+
+Well, as you probably know, NeoDesk 4 took a bit longer than anticipated.
+
+In the meantime, I kept getting a lot of comments about new features and
+
+things that needed to be changed in Geneva. The list grew, and grew.
+
+
+
+At the same time, it became obvious that I would need to do another version
+
+of NeoDesk 4. Rather than put out two separate newsletters to announce the
+
+new versions of the two programs, it made a lot more sense to wait until
+
+they were both done and send one big newsletter. This also gave the beta
+
+testers a lot more time to try both programs before they got released.
+
+
+
+In case you haven't heard of Geneva before, let me tell you a little bit
+
+about it. Geneva is a Multitasking Application Environment (Multitasking
+
+AES) that allows any Atari to multitask unlimited GEM applications and load
+
+and unload unlimited desk accessories, depending only upon free memory.
+
+
+
+It offers many other features, including the ability to put programs and
+
+accessories to "sleep" (so they won't consume system time), tear-off menus
+
+(into their own windows), 3D buttons, keyboard menu control, animated mouse
+
+shapes, an enhanced file selector, and a complete Task Manager to control
+
+the environment.
+
+
+
+In its default mode, Geneva uses the same concept of "cooperative
+
+multitasking" that Atari's GEM has always used. This means that the small
+
+system slowdown you might experience is directly proportional to the number
+
+and complexity of the applications you are running. It also means that
+
+Geneva is much more compatible with older applications than other
+
+multitasking environments.
+
+
+
+At long last, we are ready to ship the new version of Geneva, release 004.
+
+Among the more than 200 changes I've made to the program are these:
+
+
+
+  - Eric Smith's MiNT kernel can be used, to provide true preemptive
+
+  multitasking, while also allowing alternate filesystems, pipes, etc.
+
+
+
+  - Text in dialog buttons and window gadgets can have a shadowed
+
+  appearance, to make it more readable.
+
+
+
+  - There is a new "Optimize window redraws" program flag, and
+
+  miscellaneous options for preserving the mouse and system color palette
+
+  when switching between applications.
+
+
+
+  - There are new keyboard equivalents for iconification, cut/paste in a
+
+  dialog's editable fields, and resetting the mouse pointer.
+
+
+
+  - Any dialog without editable fields can respond to just the keyboard
+
+  equivalents, without Alternate being held.
+
+
+
+  - Some applications which previously would not work in multitasking mode
+
+  because they displayed a dialog without locking the menu bar first now
+
+  work.
+
+
+
+  - A new command has been added to the GEM.CNF file, "runacc". It allows a
+
+  desk accessory to be loaded but not opened.
+
+
+
+  - Geneva's item selector has many improvements, as well:
+
+    o  The "EXT" list includes a new entry which, when chosen, changes the
+
+       template back to the value it had when the item selector first opened.
+
+    o  Read-only files appear with a checkmark in front of their names.
+
+       This attribute can also be changed in Info.
+
+    o  Sort by Date now sorts files that were created on the same day, but
+
+       at different times, correctly.
+
+    o  The date and time of a file being copied are preserved.
+
+
+
+Among the many errors that have been corrected in the main program are:
+
+
+
+  - Putting the topmost application to sleep will always return to its
+
+  parent, not the next open application.
+
+
+
+  - Switching applications from the Applications tear-away menu will not
+
+  mess up the locations of menu bars.
+
+
+
+  - Memory allocation is more efficient.
+
+
+
+  - True Type fonts can be used with NVDI 3 and Speedo 5.
+
+
+
+  - Switching between single-tasking applications will no longer sometimes
+
+  result in a blank menu bar.
+
+
+
+  - If all applications except for the current one are asleep, then
+
+  quitting it will no longer cause a lockup.
+
+
+
+  - Running a single-tasking application from GEM.CNF with the "runsleep"
+
+  command now works correctly.
+
+
+
+  - Using a Falcon with a non-VGA monitor (like the SC1224) reboots into
+
+  the correct resolution now.
+
+
+
+Changes in the Task Manager
+
+
+
+  - Program flags are now more obviously broken up into Temporary and
+
+  Permanent sets.
+
+
+
+  - There are new options for setting the colors of all window gadgets, and
+
+  even the style and color of disabled menu entries in pulldown menus.
+
+
+
+  - The positions of the main Tasks window and all dialogs in the Task
+
+  Manager can be saved.
+
+
+
+Changes in Geneva TOS
+
+
+
+  - All Speedo GDOS & True Type fonts (not just the first 16) can be used.
+
+
+
+  - The Quit menu entry can be chosen while a TOS program is running.
+
+
+
+  - You can now access windows/menu bars whenever a TOS program run by
+
+  Geneva TOS is waiting for any type of keyboard input, not just some
+
+  types.
+
+
+
+  - Geneva TOS can be passed commandline parameters including redirection.
+
+
+
+  - The "Press any key" message when a TOS program exits can be turned off.
+
+
+
+  - The speed of text output has been improved.
+
+
+
+  - The problem that caused a crash whenever any program was run by Geneva
+
+  TOS on a Falcon has been fixed.
+
+
+
+Changes in Geneva Help
+
+
+
+  - All Speedo GDOS & True Type fonts (not just the first 16) can be used.
+
+
+
+  - When going backward to the previous screen, the window is returned to
+
+  the slider positions it previously had.
+
+
+
+  - Underlined keywords are now drawn in a different color, to make them
+
+  more visible.
+
+
+
+  - A number of graphics functions have been added. With these, help text
+
+  can include buttons, lines, boxes, and graphic images.
+
+
+
+  - The help compiler can automatically generate cross-references to other
+
+  screens.
+
+
+
+So, as you can see, there are some very significant changes in this
+
+version. And considering the price to update, there's no reason not to do
+
+it right away. It's all yours for just $5! If you haven't seen Geneva
+
+before, there is even a demo version you can order.
+
+
+
+
+
+GenevaRun
+
+---------  by Yanick Dufresne
+
+
+
+Although Geneva and NeoDesk 4 are extremely efficient, smaller systems
+
+might run short of memory when trying to run both of them and multitask
+
+several other programs at the same time.
+
+
+
+GenevaRun is a RAM-efficient multitasking program launcher for Geneva.  In
+
+keeping with all Gribnif products, I've designed it for complete
+
+integration into your system. It uses the same group file format as NeoDesk
+
+4 to store user-defined long filenames and the actual path to any
+
+application, group, or data file.
+
+
+
+Those who own NeoDesk can use it to create and modify the groups. This
+
+allows you to have a two-way system, using GenevaRun when you run those
+
+RAM-hungry applications, and having a NeoDesk setup for your file
+
+management tasks the rest of the time.
+
+
+
+GenevaRun can even be configured to start automatically by using the
+
+GEM.CNF file.
+
+
+
+Here are some of the features I've incorporated into the program:
+
+
+
+  - Fully windowed interface: Each group file is contained in its own
+
+  window, listing the items in a column of text. Launching a program is as
+
+  easy as double-clicking on an entry in the list, or pressing a keyboard
+
+  equivalent.
+
+
+
+  - Automatic datafile passing: This is similar to the way Install
+
+  Application works in NeoDesk. You can open a document or other program
+
+  data file and have the application launched with the file  already loaded
+
+  into memory.
+
+
+
+  - Real-time scrolling of the lists.
+
+
+
+  - Up to 256 groups can be open at once.
+
+
+
+  - Up to 65,536 items in each group.
+
+
+
+  - Groups can contain groups, even in loops.
+
+
+
+  - Supports the AV protocol for opening group files, adding items and
+
+  opening a shell window to an item's path. With NeoDesk as the server, the
+
+  the item will be selected for you.
+
+
+
+GenevaRun is Shareware. The unregistered version is distributed freely with
+
+Geneva release 004. You can register your copy with Gribnif for $15. Some
+
+features are not accessible until you register.
+
+
+
+
+
+The Geneva Utilities Disk
+
+-------------------------  by Yanick Dufresne
+
+
+
+Did you ever wish for a well written windowed file displayer? Would you
+
+like to automate some tasks in your favorite program, but it does not have
+
+a built-in macro recorder? Are you tired of the boring green desktop?
+
+
+
+Gribnif Software has a surprise for you! We are proud to present the Geneva
+
+Utilities Disk. The package includes Geneva View, Geneva Desk and Geneva
+
+Macros.
+
+
+
+Geneva View
+
+
+
+Geneva View is a simple, efficient, text file displayer. It features all of
+
+the usual characteristics you have come to expect from our products.  It
+
+has a modern windowed interface, similar to the Geneva Help Viewer.  You
+
+can display files in any installed GDOS font you like, and even show them
+
+as a hexadecimal dump. Simple and effective!
+
+
+
+Geneva Desk
+
+
+
+If you ever got tired of the dull green desktop you get when you run
+
+without NeoDesk or when you run single-tasking applications, you'll love
+
+Geneva Desk. It allows you to choose any color and pattern combination for
+
+your background. If you do run with NeoDesk, you can use the same desktop
+
+as Neo's, including the pictures and the Desktop Notes! Geneva Desk will
+
+also replace the desktop of any application that doesn't provide its own.
+
+This little accessory is a real must!
+
+
+
+Geneva Macros
+
+
+
+Now, the serious stuff. The Geneva Macro recorder is a full-blown macro
+
+utility, with timer, button, mouse and keyboard event recording. You can
+
+record macros of virtually any number of events, and play them back with a
+
+simple keypress. You can also edit the individual steps that comprise a
+
+macro, using the full cut & paste interface.
+
+
+
+Geneva Macros can also be set to look for a specific macro set for every
+
+application you run, dynamically changing when you switch between
+
+applications. Once you've tasted the power of macros, you won't be able to
+
+live without them! This is an absolute essential for any serious Geneva
+
+user.
+
+
+
+The Geneva Utilities Disk sells for $15 and includes disk-based
+
+documentation, in printable form and in Geneva Help files.
+
+
+
+[Version 2 of Geneva Macros is now available for the same price. It
+
+includes autostart and repeated macro execution, as well as support for
+
+popup message windows and sounds.]
+
+
+
+
+
+NeoDesk 4 Release 003
+
+---------------------  by Dan Wilga
+
+
+
+[Note: At the time this file was re-edited, NeoDesk was at release 005]
+
+
+
+To go with the new Geneva I talked about earlier, there is also a new
+
+version of NeoDesk 4. Not only did I manage to correct all of the problems
+
+I knew about, I also added a few new goodies:
+
+
+
+  - You can now assign any number of custom icons to individual disk
+
+  drives. This way, your CD-ROM drive can have a different icon from your
+
+  Hard Disk and RAM Disk.
+
+
+
+  - The program loads a bit faster, in general. On a stock ST, it's about a
+
+  one second difference.
+
+
+
+  - The Window Colors and Button Colors dialogs have new options for a
+
+  shadowed text effect. This makes the text more legible on monochrome
+
+  systems.
+
+
+
+  - When creating a new folder, there is an option to have the window
+
+  automatically open the new folder.
+
+
+
+  - The Floppy Formatting dialog has a new option for the cluster size.
+
+  Also, the size, in bytes, of the format you have chosen is displayed.
+
+
+
+  - NeoDesk uses the XACC protocol and can act as an AV Server, to allow
+
+  drag and drop between it and other applications which also use this
+
+  protocol.
+
+
+
+  - If you have the program Kobold, NeoDesk can automatically tell it to
+
+  copy and delete files.
+
+
+
+  - A number separator can be specified, to give a more pleasant appearance
+
+  to large numbers, like 123,456.
+
+
+
+  - The picture viewer and desktop picture can be set to expand or shrink a
+
+  picture so that it fills the entire screen. A picture's aspect ratio can
+
+  also be corrected for the current video mode.
+
+
+
+  - The Control Panel's corner clock can now work in some of the Falcon's
+
+  non-ST video modes. It also works with all of the video modes on the
+
+  Crazy Dots graphics card.
+
+
+
+  - The Memory dialog now displays the total RAM in your system, not just
+
+  the free RAM.
+
+
+
+  - The Program Info File dialog has a new option for the speed of the
+
+  CaTTamaran CPU accelerator. Another new option allows you to run the
+
+  program in single-tasking mode when using Geneva 004 (or newer) or MagiC
+
+  2.0.
+
+
+
+  - Install Application now uses a free-form wildcard to define the
+
+  document extensions. Now, you can have more than two extensions per
+
+  application.
+
+
+
+  - Repeatable scrolling is faster when the mouse is held on one of the
+
+  up/down window gadgets.
+
+
+
+  - You can define a keystroke to open an item in a group. When the correct
+
+  keys are pressed on the keyboard, the item in the group is opened.
+
+
+
+  - NEOLOAD's bomb trap can now redirect its output to the printer, and
+
+  contains more information than before.
+
+
+
+  - The icon editor's Image menu has two new options, Double Height and
+
+  Half Height. These are useful when converting icons to or from ST Medium
+
+  resolution.
+
+
+
+Of course, there were also some bugs that needed to be fixed. Some of the
+
+more important ones are:
+
+
+
+  - The speed of background printing with NEOQUEUE and/or SPOOLxxx has been
+
+  improved. There is also now a way to flush the spooler of its contents.
+
+
+
+  - The Recoverable Trashcan will no longer sometimes crash after deleting
+
+  or undeleting files. A few other fixes were made, as well.
+
+
+
+  - When a group window is on top, its attributes will no longer be
+
+  inherited by any new directory windows that are opened. Furthermore,
+
+  opening a group window no longer affects the position of the next
+
+  directory window to open.
+
+
+
+  - When not using Geneva, some cases where closing dialogs would not
+
+  redraw the area underneath have been fixed.
+
+
+
+  - The icon editor does a much better job of freeing memory when you quit
+
+  it or close a file.
+
+
+
+  - Having several filename conflicts during a copy will no longer cause a
+
+  crash.
+
+
+
+  - The Window Colors and Button Colors dialogs will not crash if called
+
+  more than once in the same session.
+
+
+
+  - The Window Colors dialog will now set the colors of the gadgets in the
+
+  window lower split to be the same as those in the upper one.
+
+
+
+  - Having NeoDesk come up "in a window", as set in the default INF file,
+
+  works correctly. Having one or more windows open by default also works.
+
+
+
+  - When not using Geneva, running a program while 4 or more windows are
+
+  open will not cause a lockup.
+
+
+
+  - Renaming the original file during a copy/move name conflict works
+
+  again.
+
+
+
+  - Creating a 4-color icon from a 2-color one works again.
+
+
+
+  - Copying multiple icons within the same NIC window will not sometimes
+
+  crash.
+
+
+
+Of course, there are a lot more things that have changed. Just as with the
+
+Geneva update, you can get this new version for $5, and you don't even have
+
+to send your disk in. Enjoy it!
+
+
+
+
+
+NeoDesk 4 Icon Disk
+
+-------------------  by Dan Wilga
+
+
+
+One really great addition to NeoDesk 4 is this icon disk. It contains
+
+nearly 300 icons, already separated into categories.
+
+
+
+These are not lots of the same useless images that are completely
+
+irrelevant to the Atari. We sorted through about 10,000 icons to find the
+
+ones that are useful on the Atari and then we hand-modified them, so that
+
+many now include separate selected images and different numbers of colors.
+
+
+
+Also included on the disk are some multicolored images that can be used as
+
+a tiled desktop picture with NeoDesk 4.
+
+
+
+We also still carry the NeoDesk 3 icon disk, which contains over 700 icons.
+
+These are all monochrome icons, without selected images.
+
+
+
+Either way you go, these icon disks can be real time savers.
+
+
+
+
+
+Gribnif Utilities Disk
+
+----------------------  by Dan Wilga and Al Fasoldt
+
+
+
+There have been some recent changes and additions to the Utilities Disk.
+
+Even if you already have an older copy, you may want to get another one,
+
+just for these enhancements.
+
+
+
+World Clock
+
+
+
+Gribnif Software has customers all over the globe, but programmer Dan Wilga
+
+had a problem managing dealer and customer contacts in far-flung places:
+
+How could he find out precisely what time it was in any location so he
+
+would not end up calling someone in the middle of the night? A high-tech
+
+watch was out of the question for an expert at computer code, so he came up
+
+with the Gribnif World Clock -- a dazzlingly clever graphical display of
+
+the globe that can pop up the time and date in any preset location.
+
+
+
+To make it even easier, the World Clock can be configured to show time
+
+zones in all locations, too -- just the thing if you merely want to check
+
+the local time in parts of Europe, for example.
+
+
+
+The world map is based on the most accurate projection available.  Because
+
+it is stored as a GEM metafile -- a mathematical representation of an image
+
+-- the map can be scaled to any size without "jaggies" or other odd
+
+effects. It comes with dozens of locations already preset, and you'll
+
+probably find one close to you that gives your local time. But you'll also
+
+want to customize the World Clock with your exact location (get your
+
+hometown coordinates from a geological map or from the weather service) and
+
+with other locations as well.
+
+
+
+World Clock has other options, too, and they're all easy to set thanks to
+
+its clear documentation. The map window can be sized all the way from very
+
+tiny to gigantic (full size in TT High Resolution or greater) and can even
+
+be iconized under Geneva and any other operating system that supports
+
+iconizable windows.
+
+
+
+Best of all, World Clock is "chocolateware." If you try World Clock and
+
+decide to keep using it, you have a moral and ethical obligation to send
+
+some chocolate candy to Dan Wilga -- or at least to think warmly of Dan
+
+each time you pass the chocolate counter. World Clock is available as a
+
+download from GEnie and other online services, and can be found on Atari
+
+CD-ROM collections and at Internet sites as well.
+
+
+
+ColaCalc 1.3
+
+
+
+This is a unique programmer's calculator, which appears whenever you press
+
+a combination of keys on the keyboard. It's always available, no matter
+
+what program you are running. It does not do floating point math, but it
+
+does include base conversions, bit operations, and much more.
+
+
+
+ColaCalc has been updated to work with the Falcon's extended graphics
+
+modes, and to work with the Crazy Dots video card.
+
+
+
+MemFile 3.1
+
+
+
+MemFile is a program that allows you to view and edit any portion of your
+
+computer's memory, a file on any disk drive, or the individual sectors of a
+
+drive. It can be used as a desk accessory or as a program.
+
+
+
+The new version supports the AP_TERM message, so Geneva or MultiTOS can
+
+tell it to terminate gracefully. The name of a file or disk drive can be
+
+passed as a parameter when run as an NPG or PRG. Hardware registers can now
+
+be edited, and MemFile will only rewrite bytes that have actually changed.
+
+The sector editor can edit larger disks now. Cosmetically, all dialogs have
+
+a 3D appearance when using AES 3.4 or newer (or Geneva.)
+
+
+
+(Al Fasoldt, Systems Editor of the Syracuse Newspapers in Syracuse, New
+
+York, is a syndicated culumnist on consumer technology. He is co-author of
+
+the Geneva user manual.)
+
+
+
+
+
+STalker 3.05
+
+------------  by Dan Wilga
+
+
+
+STalker is our telecommunications program that runs in a regular GEM
+
+window. It lets you talk to online services and BBSes using VT100 and
+
+PC-ANSI terminal emulations, and lets you upload and download files with a
+
+variety of protocols, including XModem, YModem, ZModem, and B-Plus.
+
+STalker can work as a GEM desk accessory, so even if you don't have a
+
+multitasking environment, it can download files while you continue to use
+
+your computer for other things.
+
+
+
+Last year, Jeff Krzysztow took over development of STalker, STeno and
+
+CardFile. Since that time, STalker has been through a few revisions.  Here
+
+are some of the major things to change in each version since 3.02:
+
+
+
+Changes in version 3.03:
+
+
+
+  - The Preferences dialog has several new items, one to toggle the menu in
+
+  a window feature, another for Atari clipboard usage, and yet another to
+
+  give a warning alert before clearing the buffer when [Control][Clr/Home]
+
+  is pressed.
+
+
+
+  - Some keyboard equivalents which conflicted with Geneva have alternate
+
+  definitions.
+
+
+
+  - [Control][Tab] will invoke the BackTalk compiler if it is running.
+
+
+
+  - If you have Geneva, you can tear-away STalker's menus or use them from
+
+  the keyboard with [Alternate][Space].
+
+
+
+  - The main STalker window can be closed without quitting. This is
+
+  especially useful when multitasking.
+
+
+
+  - STalker will print correctly under all revisions of TOS.
+
+
+
+  - On a Falcon, the Serial port is now the only port available, and faster
+
+  baud rates are possible.
+
+
+
+Changes in version 3.04:
+
+
+
+  - Some minor bug fixes were made, including one having to do with marking
+
+  a block to append.
+
+
+
+Changes in version 3.05:
+
+
+
+  - A bug in TOS 4.04 having to do with the color palette getting changed
+
+  unexpectedly, is now avoided by STalker.
+
+
+
+  - Zero-bytes will not be added to a file capture if Echo Typed Characters
+
+  is enabled.
+
+
+
+  - Less system time is consumed when STalker is just waiting for input.
+
+  The result is a faster-updating display.
+
+
+
+  - The size and position of the window that are saved in the the
+
+  STALKER.INF file are now strictly obeyed when STalker first runs.
+
+
+
+Of course, you can update from any STalker 3 version up to 3.05 with the
+
+same patch disk. Jeff hasn't stopped working on it yet, so there may be
+
+even more versions in the future.
+
+
+
+
+
+STeno 2.12
+
+----------  by Dan Wilga
+
+
+
+Back when we first started selling STeno as a separate program from
+
+STalker, we never had any idea how popular a text editor it would become. I
+
+suppose the fact that it works as a desk accessory or a program, so it's
+
+always there when you need it, is one of its biggest plusses. It also has
+
+word wrap and paragraph formatting, which make it invaluable for editing
+
+text files (like the one you're reading right now!)
+
+
+
+STeno has been going through some big changes. If you don't already have
+
+version 2.10, you really should get it. You'll be surprised at how much has
+
+changed:
+
+
+
+Changes for STeno 2.10
+
+
+
+  - STeno can communicate with NeoDesk even if it is not listed in the
+
+  "Accessories" dialog in NeoDesk.
+
+
+
+  - STeno now shows the cursor's Line and Column number, and whether the
+
+  current file has been modified.
+
+
+
+  - STeno will use Geneva's menu-in-a-window feature. This means that you
+
+  can use tear-away menus and [Alt][Space] to traverse the menu if you have
+
+  Geneva.
+
+
+
+  - STeno can now be told to terminate gracefully from Geneva or MultiTOS.
+
+
+
+  - It is now possible to close the STeno's window without quiting STeno
+
+  when run as an application.
+
+
+
+  - Under AES 3.40 or newer, all buttons are now 3D. Under Geneva, its
+
+  radio buttons are used, also.
+
+
+
+  - STeno supports the new Atari Clipboard standard.
+
+
+
+  - The font size and window size/position are stored independently for ST
+
+  Medium/Low versus other resolutions. This way you will not end up with a
+
+  font that is the wrong size when changing between resolutions.
+
+
+
+  - There is a configuration option to allow scrolling by line, instead of
+
+  the default jump scrolling.
+
+
+
+  - The cursor blink can be turned off.
+
+
+
+  - The menu can now be toggled between being in a window or not, by way of
+
+  an option.
+
+
+
+  - There are many options which enhance STeno's ability to communicate
+
+  with other copies of STeno that are running at the same time.
+
+
+
+  - There is now an overwrite mode for new text that is entered.
+
+
+
+  - [Shift][Insert] will paste the internal buffer (like [Undo]).
+
+
+
+  - Blocks of text can be selected from the keyboard. Columns of text can
+
+  even be selected and manipulated!
+
+
+
+  - When saving a file, if it already exists, you will optionally be
+
+  prompted to Replace, Append, or Cancel.
+
+
+
+  - In type-ahead mode, you can no longer [Backspace] over the character
+
+  that represents the start of a Type-Ahead line. You can however, [Delete]
+
+  the character. There are other changes to type-ahead, too.
+
+
+
+Changes for STeno 2.11
+
+
+
+  - This version simply fixes some small bugs introduced in 2.10.
+
+
+
+Changes for STeno 2.12
+
+
+
+  - Many small changes have been made to type-ahead mode.
+
+
+
+  - Line scrolling will no longer cause the mouse to disappear or draw at
+
+  odd times.
+
+
+
+  - STeno should no longer lose characters when the window scrolls.
+
+
+
+  - STeno will no longer resize the window if it is moved only slightly off
+
+  the screen.
+
+
+
+  - The alert for Replace or Append when saving is now optional.
+
+
+
+
+
+CardFile 4.06
+
+-------------  by Dan Wilga
+
+
+
+[Note: At the time this file was re-edited, CardFile was at version 4.08]
+
+
+
+CardFile is a very popular program that lets you keep track of names,
+
+address, phone numbers, and other information about individuals or groups.
+
+It can also track appointments, and tell you at the beginning of the day
+
+how many things you have to do. What's more, because it works as a desk
+
+accessory or as a program, it's always available when you need it.
+
+
+
+Recently, Jeff Krzysztow (who did the new versions of STalker and STeno)
+
+approached me with the idea of doing some improvements to CardFile. This is
+
+the result:
+
+
+
+  - CardFile handles extended characters much better now. A problem in the
+
+  Merge function has been fixed, and a printer configuration file can
+
+  contain translations so that non-English letters can be printed
+
+  correctly. My phone list (with all those French and German names in it)
+
+  looks a lot better now.
+
+
+
+  - If you are using MultiTOS or Geneva, CardFile can now be told to
+
+  terminate gracefully. Also, the Send feature can be used even when
+
+  CardFile is run as a program in a multitasking environment.
+
+
+
+  - There are new keyboard equivalents for Sorting (in the Filter menu),
+
+  sending just the current card's address, and sending the whole card to
+
+  another application. With Geneva, the window can be closed temporarily
+
+  with a keypress.
+
+
+
+  - It is now possible to have CardFile automatically come up in the Agenda
+
+  Menu if there are any appointments scheduled.
+
+
+
+  - CardFile includes a Geneva help file listing keyboard equivalents.
+
+
+
+Those are just some of the new features. If you've seen previous versions
+
+of CardFile, you're sure to find these extremely helpful. If you haven't,
+
+what are you waiting for? Try the demo version!
+
+
+
+
+
+Interface
+
+---------  by Dan Wilga
+
+
+
+At long last, Interface is available in English, manual and all!
+
+
+
+Interface is a resource construction set: a program which edits the
+
+resource (.RSC) files used by other programs to draw GEM dialogs and menus.
+
+It works with all Atari computers, including the TT and Falcon.
+
+
+
+It has a very intuitive user interface which allows you to easily create
+
+and edit multiple resource files at once. Its features include:
+
+
+
+  - Supports the extensions of Geneva and Atari's MultiTOS, such as 3D
+
+  buttons.
+
+
+
+  - Utilizes a completely window-based system, which includes pop-up menus,
+
+  keyboard equivalents within dialogs, and on-line help.
+
+
+
+  - Displays information for the object under the mouse (name, size, etc.)
+
+
+
+  - Objects can be automatically resorted, or arbitrarily sorted within the
+
+  tree.
+
+
+
+  - A group of objects can have their flags all set to the same value
+
+  quickly and easily.
+
+
+
+  - Allows the setting of extended object types, flags, and states.
+
+
+
+  - Objects can be resized by exact coordinates.
+
+
+
+  - Can easily cut and paste multiple objects between resource files.
+
+
+
+  - The icon editor imports data in ICN, IMG, and Windows icon formats.  It
+
+  can also edit and save icons using the new multicolored icon format for
+
+  Geneva and MultiTOS.
+
+
+
+  - There is a Search feature which can find any portion of a text string
+
+  or object label.
+
+
+
+  - The object grid can be set independently in the horizontal and vertical
+
+  directions so that objects are snapped to single character, half
+
+  character, or single pixel increments.
+
+
+
+  - Objects can be quickly centered, or left- or right-aligned.
+
+
+
+  - It has a unique resource comparison feature which immediately points
+
+  out the differences between two files (object names, sizes, attributes,
+
+  etc.)
+
+
+
+  - Automatic positioning of keyboard equivalents within menu strings is
+
+  possible. You don't have to count all the spaces anymore!
+
+
+
+  - Output can be saved as header or source code files for C, Pascal,
+
+  Modula 2, or BASIC.
+
+
+
+  - It includes the MyDial development kit for creating special checkboxes,
+
+  radio buttons, and objects with keyboard equivalents in your own
+
+  programs. Also included is source code for loading and displaying
+
+  resource files (potentially larger than 64k) containing color icons,
+
+  under any TOS version.
+
+
+
+If you have need of a better resource file editor, then Interface is the
+
+program for you.
+
+
+
+Anyone who has purchased an advance copy of Interface without the manual
+
+will be receiving the new version and manual automatically in September.
+
+Look for it in the mail.
+
+
+
+
+
+Name the Gribnif Contest Results
+
+--------------------------------  by Dan Wilga
+
+
+
+In our last newsletter, we introduced you to our mascot and asked you to
+
+give the little guy a name. Well, we certainly did get some interesting
+
+responses...
+
+
+
+The most common was "Finbirg". The most detailed was "Bigrnif"; it was
+
+accompanied by a one-page letter, describing the history of the Gribnif
+
+clan. Other cute ones were "Little Niffer", "Gribbs", "Gribby", and "Bit".
+
+The weirdest, by far, was "George Peschi", suggested by a youngster.
+
+
+
+However, our expert panel of judges has made their decision. The winning
+
+name, as suggested by Dr. Terence J. Elliott of Bermuda, is "Overbyte".
+
+Congratulations! And thanks to everyone who entered the contest.
+
+
+
+Now, if we could only get the Gribnif to stop eating all the ChocolateWare
+
+donations...
+
+
+
+
+
+Order Form & Upgrade Information
+
+--------------------------------
+
+
+
+[These sections of the original newsletter are no longer current. Please
+
+refer to our web page, http://www.pair.com/gribnif for up-to-date
+
+information. You can also send email to gribnif@pair.com]
+
+
+
+
+
+
+
+      Entire newsletter contents Copyright ½ 1995-97, Gribnif Software.
+
+                            All Rights Reserved.
+

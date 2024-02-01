@@ -1,0 +1,404 @@
+#!/usr/bin/perl
+#
+# A highly configurable channel changer script that handles multiple tuners
+# at once. By Dan Wilga (mythtv-users2(at)dwilga-linux1.amherst.edu). 10/22/08
+#
+# This script will run more quickly if you install the CPAN module Time::HiRes.
+
+use strict;
+my( %remoteIDs, %digits, %after );
+
+# USER-CONFIGURABLE OPTIONS START HERE
+
+# NOTE: after you make any change to the parameters in this script,
+# be sure to test it from the commandline. MythTV does not report
+# any errors caused by this script, so if you don't test, you'll never
+# know why it failed.
+
+# Set to non-zero for extra debugging output. You'll have to run this
+# script from the commandline to see it.
+my $DEBUG = 0;
+
+# If this option is set to a non-zero value, then the script will 
+# return back to MythTV more quickly. While this does mean that the new
+# channel will be displayed more quickly, it also means that you may see
+# the tail end of the channel changing process in the recorded video.
+my $RETURN_QUICKLY = 1;
+
+# Path of a file to use for locking. This MUST be on a local filesystem,
+# not one mounted by NFS.
+my $LOCKFILE     = '/tmp/change_channel.lock';
+
+# Path of the lircd device, usually /dev/lircd or /dev/lircd1, but
+# a higher number can also be used. Put this in 'quotes' or "quotes".
+my $LIRC_DEV     = '/dev/lircd';
+
+# The maximum number of seconds that this script can take. This
+# includes any time spent waiting for lircd to finish sending button
+# press requests from other programs (or other instances of this script.)
+my $TIMEOUT      = 30;
+
+# Delay between keypresses, in seconds. Usually a number less than 1.0.
+# If you find that the device misses some digits, increase this value.
+#
+# When this option is zero, the system "irsend" command is used, instead of
+# the internal irsend emulation code.
+#my $PAUSE        =  0.45;
+my $PAUSE        =  0;
+
+# Zero-pad the channel number to this many digits. For example, if set
+# to 3, this will turn a channel number of "9" into "009", which results
+# in faster channel changing for some IR devices.
+my $ZERO_PAD_DIGITS = 3;
+
+# System commands to run before/after changing a channel. This can be used
+# to do things like muting the audio with 'amixer', so that sound is not
+# garbled while the channel is being changed when watching live TV. This can
+# be undesirable when you are watching a pre-recorded program, and a new
+# recording is starting automatically, because you will lose playback sound.
+#
+# Example: Set "professional" mode for SPDIF output
+# my $RUN_BEFORE_CHANGE  = 'iecset professional on';
+my $RUN_BEFORE_CHANGE  = '';
+my $RUN_AFTER_CHANGE  = '';
+
+# Here is where you map a name (remoteID) of your choosing for each
+# device to the correct name for that device, as stored in
+# /etc/lircd.conf. You will pass the name you choose here as a commandline
+# parameter to this script.
+#
+# The format is:  'remoteID' => 'lirc device'
+# For example:
+# %remoteIDs = (
+#   'dish1' => 'DISH_1',
+#   'dish2' => 'DISH_2',
+# );
+%remoteIDs = (
+);
+
+# Here's the fun part--where you map channel digits to lirc keycodes.
+# The format is:   $digits{'remoteID'} = [ 'keycode0', 'keycode1' ... ];
+# where "remoteID" is one of the IDs you defined above, and the 'keycodes'
+# are the corresponding key names for each digit, from 0-9, as stored in
+# /etc/lircd.conf.
+#
+# This example maps the digit X to keycode "numX" in lircd.conf, for two
+# RemoteIDs:
+# $digits{'dish1'} = $digits{'dish2'} = [
+#   'num0',
+#   'num1',
+#   'num2',
+#   'num3',
+#   'num4',
+#   'num5',
+#   'num6',
+#   'num7',
+#   'num8',
+#   'num9',
+# ];
+
+$digits{'yourRemoteID'} = [
+  'keycodeFor0',
+  'keycodeFor1',
+  'keycodeFor2',
+  'keycodeFor3',
+  'keycodeFor4',
+  'keycodeFor5',
+  'keycodeFor6',
+  'keycodeFor7',
+  'keycodeFor8',
+  'keycodeFor9',
+];
+
+# These keystrokes will be sent after the channel. One use for this is
+# to send a "select" button so that the device acts on the channel number
+# more quickly. Another is to send a "cancel", so that it removes any OSD.
+# The format is:   $after{'remoteID'} = [ 'keycode1', 'keycode2' ... ];
+# If you don't want anything here, just comment-out the lines.
+#
+# Example: Send "select" and "cancel" keypresses after the channel
+# $after{'dish1'} = $after{'dish2'} = [
+#   'select', 'cancel'
+# ];
+
+###########################################
+#    END OF USER-CONFIGURABLE OPTIONS
+###########################################
+
+
+die "change_channel remoteID channel\n" unless @ARGV==2;
+
+# See if this computer has the CPAN module Time::HiRes installed.
+# If so, we can avoid the overhead of a system() call.
+eval q{use Time::HiRes qw{sleep}};
+my $have_time_hires = $@ eq '';
+
+use IO::Socket;
+use POSIX qw(setsid :errno_h);
+use Fcntl qw(O_WRONLY O_EXCL O_CREAT);
+
+
+# Do some sanity checking. First, make sure there are remoteIDs.
+die "No remoteIDs defined\n" unless keys %remoteIDs;
+
+# Now, make sure the right number of digits is defined for each remoteID
+foreach( keys %remoteIDs ) {
+  die "There is no \%digits entry for the remoteID '$_'\n"
+      unless ref $digits{$_};
+  die "There must be exactly 10 keycodes in the \$digits{'$_'} list.\n".
+    "I found ".(@{$digits{$_}}||'0').".\n"
+      unless @{$digits{$_}} == 10;
+}
+
+# Finally, double-check the %after list
+foreach( keys %after ) {
+  die "There is no \$remoteIDs{'$_'} entry to go with \$after{'$_'}\n"
+      unless exists $remoteIDs{$_};
+}
+
+my( $remote_id, $channel ) = @ARGV;
+
+die "remoteID{'$remote_id'} is not defined\n"
+    unless exists $remoteIDs{$remote_id};
+
+fork_me() if $RETURN_QUICKLY;
+
+# states for send_keypress()
+use constant P_SEND    => 0;
+use constant P_BEGIN   => 1;
+use constant P_MESSAGE => 2;
+use constant P_STATUS  => 3;
+use constant P_DATA    => 4;
+use constant P_N       => 5;
+use constant P_DATA_N  => 6;
+use constant P_END     => 7;
+
+$channel = sprintf( "%0${ZERO_PAD_DIGITS}d", $channel )
+    if $ZERO_PAD_DIGITS;
+
+system( $RUN_BEFORE_CHANGE )
+    if $RUN_BEFORE_CHANGE ne '';
+
+$SIG{ALRM} = sub { die "Timeout\n" };
+my $timeout_when = time() + $TIMEOUT;
+alarm( $TIMEOUT );
+
+my $have_lock;
+lockup();
+
+if( $PAUSE ) {
+  foreach( split( //, $channel ) ) {
+    send_keypress( $digits{$remote_id}[$_] );
+    my_sleep();
+  }
+
+  foreach( @{$after{$remote_id}} ) {
+    send_keypress($_);
+    my_sleep();
+  }
+}
+else {
+  system("irsend -d $LIRC_DEV SEND_ONCE $remoteIDs{$remote_id} ".
+    join(' ',
+    map { $digits{$remote_id}[$_] }
+            ( split( //, $channel ), @{$after{$remote_id}} )
+          ));
+}
+
+alarm(0);
+
+system( $RUN_AFTER_CHANGE )
+    if $RUN_AFTER_CHANGE ne '';
+
+unlock();
+
+##### END OF MAIN
+
+sub my_sleep {
+  $have_time_hires ?
+    &sleep($PAUSE) :    # calls Time::HiRes::sleep
+    system("sleep $PAUSE"); # more expensive system call
+}
+
+sub send_keypress {
+  # This routine performs the equivalent of:
+  #   system("irsend -d $LIRC_DEV SEND_ONCE $remoteIDs{$remote_id} $_[0]\n");
+  print "Sending key(s) '@_' of remote '$remoteIDs{$remote_id}'".
+    " to $LIRC_DEV\n"
+      if $DEBUG;
+  my $socket = open_socket();
+  my $packet = "SEND_ONCE $remoteIDs{$remote_id} @_\n";
+  my $done = 0;
+  my $SEND_TIMEOUT = 3;
+
+  my $status = 'Timeout';
+  my $data_n = 0;
+  my $state = P_SEND;
+  my $tmo;
+  while( !$done && ($tmo = $timeout_when - time()) > 0 ) {
+    # wait until the overall timeout or $SEND_TIMEOUT, whichever is first
+    alarm($tmo > $SEND_TIMEOUT ? $SEND_TIMEOUT : $tmo);
+    if( $state == P_SEND ) {
+      print $socket $packet;
+      $data_n = 0;
+      $status = 'Timeout';
+      $state = P_BEGIN;
+    }
+    my $reply = <$socket>;
+    alarm 0;
+    $tmo = $timeout_when - time();
+    if( $reply eq '' || $tmo <= 0 ) {
+      $done = 1;
+    }
+    else {
+      alarm $tmo;     
+      print "($state) Got packet from lircd: $reply"
+          if $DEBUG;
+      if( $state == P_BEGIN ) {
+        $state = P_MESSAGE
+            if $reply =~ /^BEGIN/i;
+      }
+      elsif( $state == P_MESSAGE ) {
+        if( uc($reply) ne uc($packet) ) {
+          $state = P_BEGIN;
+        }
+        else {
+          $state = P_STATUS;
+        }
+      }
+      elsif( $state == P_STATUS ) {
+        if( $reply =~ /^SUCCESS/i ) {
+          $status = '';
+        }
+        elsif( $reply =~ /^END/i ) {
+          $status = '';
+          $done = 1;
+        }
+        elsif( $reply =~ /^ERROR/i ) {
+          $status = "Command failed: ";
+        }
+        else {
+BAD_PACKET:
+          $status = "Bad reply: $reply";
+          $done = 1;
+        }
+        $state = P_DATA;
+      }
+      elsif( $state == P_DATA ) {
+        if( $reply =~ /^END/i ) {
+          $done = 1;
+        }
+        elsif( $reply =~ /^DATA/i ) {
+          $state = P_N;
+        }
+        else {
+          goto BAD_PACKET;
+        }
+        $data_n = 0;
+      }
+      elsif( $state == P_N ) {
+        if( !($reply =~ /^(\d+)(.*)/) || $2 ne '' ) {
+          goto BAD_PACKET;
+        }
+        elsif( !$1 ) {
+          $state = P_END;
+        }
+        else {
+          $data_n = $1;
+          $state=P_DATA_N;
+        }
+      }
+      elsif( $state == P_DATA_N ) {
+        $status .= $reply;
+        $state = P_END
+            if !--$data_n;
+      }
+      elsif( $state == P_END ) {
+        if( $reply =~ /^END/i ) {
+          # this is where we differ from irsend
+          if( $status =~ / BUSY:/i ) {
+            print "Re-sending request\n"
+                if $DEBUG;
+            $state = P_SEND;  # retry
+          }
+          else {
+            $done = 1;
+          }
+        }
+        else {
+          goto BAD_PACKET;
+        }
+      }
+      print "State is now: $state\n"
+          if $DEBUG;
+    }
+  }
+  close $socket;
+  die "$status\n" if $status;
+}
+
+sub open_socket {
+  my $socket = IO::Socket::UNIX->new(
+      Proto    => "tcp",
+      Type   => SOCK_STREAM,
+      Peer   => $LIRC_DEV,
+      )
+      or die "Can't open socket on localhost: $!\n";
+  $socket->autoflush(1);
+  return $socket;
+}
+
+sub fork_me {
+  chdir '/'               or die "Can't chdir to /: $!";
+  open STDIN, '/dev/null' or die "Can't read /dev/null: $!";
+  $| = 1;     # unbuffer stdout
+
+  my $pid;
+  defined($pid = fork) or die "Can't fork: $!";
+  exit 0 if $pid;   # return to commandline
+  setsid();
+}
+
+sub lockup {
+  # Don't worry, there's an alarm to keep this from going on forever
+  while(1) {
+    if( sysopen( LOCK, $LOCKFILE, O_WRONLY|O_EXCL|O_CREAT ) ) {
+      $have_lock = 1;
+      return;
+    }
+    if( $! == EEXIST ) {
+      # Check lock file's creation time. If it was created more than
+      # $TIMEOUT+5 seconds ago, assume it's due to another run that
+      # didn't finish correctly, and delete it.
+      if( (stat($LOCKFILE))[10]+$TIMEOUT+5 < time() ) {
+        print "Deleting old lock file $LOCKFILE.\n"
+            if $DEBUG;
+        # If "No such file" (ENOENT), assume another script run
+        # already deleted it, and try to create again. Other errors die.
+        if( !unlink($LOCKFILE) && $! != ENOENT ) {
+          die "Can't delete $LOCKFILE: $!\n";
+        }
+      }
+      else {
+        print "Lock file already exists. Sleeping.\n"
+            if $DEBUG;
+        sleep 1;
+      }
+    }
+    else {
+      die "Can't open $LOCKFILE: $!\n";
+    }
+  }
+}
+
+sub unlock {
+  if( $have_lock ) {
+    close LOCK;
+    unlink $LOCKFILE;
+    $have_lock = 0;
+  }
+}
+
+END {
+  unlock();
+}

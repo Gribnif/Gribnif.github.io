@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Gribnif Software</title>
+    <link>http://www4.pair.com/gribnif/</link>
+    <description>Recent content on Gribnif Software</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 20 Jan 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://www4.pair.com/gribnif/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Al Fasoldt&#39;s &#34;Secrets of...&#34; series</title>
+      <link>http://www4.pair.com/gribnif/secrets/</link>
+      <pubDate>Sat, 20 Jan 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://www4.pair.com/gribnif/secrets/</guid>
+      <description>Newspaper writer and longtime Atari user Al Fasoldt created a series of very informative articles covering a variety of Atari topics, including these two about Gribnif Software products:
+ Secrets of NeoDesk 4 [43K] 10/29/96 Secrets of Geneva [18K] 10/29/96  </description>
+    </item>
+    
+    <item>
+      <title>NeoDesk 4</title>
+      <link>http://www4.pair.com/gribnif/downloads/neodesk/</link>
+      <pubDate>Sun, 21 Jan 2018 18:24:11 -0500</pubDate>
+      
+      <guid>http://www4.pair.com/gribnif/downloads/neodesk/</guid>
+      <description>Current version: Download NeoDesk 4.08 NeoDesk 4, the revolutionary replacement for the built-in Atari desktop, is now freeware.
+NeoDesk 4 adds hundreds of new features and enhancements over the original desktop, while remaining fully compatible with your other software applications.
+NeoDesk 4 is ideal for machines running a multitasking system (such as Geneva or MultiTOS) it also incorporates many of the features found in Geneva on singletasking systems, including 3D buttons, window gadgets, and popup menus.</description>
+    </item>
+    
+    <item>
+      <title>Geneva</title>
+      <link>http://www4.pair.com/gribnif/downloads/geneva/</link>
+      <pubDate>Sun, 21 Jan 2018 18:23:35 -0500</pubDate>
+      
+      <guid>http://www4.pair.com/gribnif/downloads/geneva/</guid>
+      <description>Current version: Download Geneva 1.08 The complete multitasking environment for all Atari ST/TT and Falcon computers. Before Geneva, the Atari was only able to load and run a single program at a time, and was only capable of using six desk accessories (without being forced to restart the computer).
+Based on the same concept of &amp;quot;co-operative&amp;quot; multitasking that the GEM environment was originally designed on, Geneva brings to the Atari a complete, easy to use, multitasking environment.</description>
+    </item>
+    
+    <item>
+      <title>Frequently Asked Questions (FAQs) for Geneva</title>
+      <link>http://www4.pair.com/gribnif/faqs/geneva/</link>
+      <pubDate>Sun, 21 Jan 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://www4.pair.com/gribnif/faqs/geneva/</guid>
+      <description>What&amp;rsquo;s the difference between preemptive and cooperative multitasking? Why can&amp;rsquo;t I use my boot manager to change resolutions? Why are the colors of some of my window gadgets messed up? Where can I get info on using MiNT with Geneva?  What&amp;rsquo;s the difference between preemptive and cooperative multitasking? Cooperative multitasking relies on applications making certain calls frequently (in this case, AES calls) in order to allow the other processes a chance to become active.</description>
+    </item>
+    
+    <item>
+      <title>Original Shareware Programs</title>
+      <link>http://www4.pair.com/gribnif/downloads/shareware/</link>
+      <pubDate>Sat, 20 Jan 2018 13:09:59 -0500</pubDate>
+      
+      <guid>http://www4.pair.com/gribnif/downloads/shareware/</guid>
+      <description>These files may be distributed freely. All are in ZIP format, and will work only on Atari and compatible computers and emulators.
+WorldClock A resizable, graphical world clock which tells you the time anywhere in the world. You can even add new locations to the map by simply typing-in the longitude and latitude.
+worldclk.zip 2/22/97
+MemFile 3.1 MemFile is a hex/decimal editor. It can edit memory, files, and disk sectors.</description>
+    </item>
+    
+    <item>
+      <title>Gribnif Software</title>
+      <link>http://www4.pair.com/gribnif/main/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://www4.pair.com/gribnif/main/</guid>
+      <description>Classic Atari ST/TT/Falcon Software Started in 1988, Gribnif Software produced various titles for the Atari ST line of computers.
+This site is dedicated to preserving two of those titles: NeoDesk 4, the desktop replacement, and Geneva, the multitasking environment. The site is maintained by Dan Wilga, the original author of the programs.
+News 2/11/2018: NeoDesk 4 and Geneva are now available as freeware in the Downloads section. We hope to make the source code available in the coming months.</description>
+    </item>
+    
+  </channel>
+</rss>
