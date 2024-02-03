@@ -1,60 +1,60 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
-  
+
   <url>
-    <loc>http://www4.pair.com/gribnif/faqs/</loc>
+    <loc>https://gribnif.github.io/faqs/</loc>
     <lastmod>2018-01-20T00:00:00+00:00</lastmod>
   </url>
-  
+
   <url>
-    <loc>http://www4.pair.com/gribnif/secrets/</loc>
+    <loc>https://gribnif.github.io/secrets/</loc>
     <lastmod>2018-01-20T00:00:00+00:00</lastmod>
   </url>
-  
+
   <url>
-    <loc>http://www4.pair.com/gribnif/downloads/neodesk/</loc>
+    <loc>https://gribnif.github.io/downloads/neodesk/</loc>
     <lastmod>2018-01-21T18:24:11-05:00</lastmod>
   </url>
-  
+
   <url>
-    <loc>http://www4.pair.com/gribnif/downloads/geneva/</loc>
+    <loc>https://gribnif.github.io/downloads/geneva/</loc>
     <lastmod>2018-01-21T18:23:35-05:00</lastmod>
   </url>
-  
+
   <url>
-    <loc>http://www4.pair.com/gribnif/faqs/geneva/</loc>
+    <loc>https://gribnif.github.io/faqs/geneva/</loc>
     <lastmod>2018-01-21T00:00:00+00:00</lastmod>
   </url>
-  
+
   <url>
-    <loc>http://www4.pair.com/gribnif/downloads/shareware/</loc>
+    <loc>https://gribnif.github.io/downloads/shareware/</loc>
     <lastmod>2018-01-20T13:09:59-05:00</lastmod>
   </url>
-  
+
   <url>
-    <loc>http://www4.pair.com/gribnif/downloads/</loc>
+    <loc>https://gribnif.github.io/downloads/</loc>
     <lastmod>2018-01-20T00:00:00+00:00</lastmod>
   </url>
-  
+
   <url>
-    <loc>http://www4.pair.com/gribnif/categories/</loc>
+    <loc>https://gribnif.github.io/categories/</loc>
     <priority>0</priority>
   </url>
-  
+
   <url>
-    <loc>http://www4.pair.com/gribnif/</loc>
+    <loc>https://gribnif.github.io/</loc>
     <lastmod>2018-01-20T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
-  
+
   <url>
-    <loc>http://www4.pair.com/gribnif/main/</loc>
+    <loc>https://gribnif.github.io/main/</loc>
   </url>
-  
+
   <url>
-    <loc>http://www4.pair.com/gribnif/tags/</loc>
+    <loc>https://gribnif.github.io/tags/</loc>
     <priority>0</priority>
   </url>
-  
+
 </urlset>
